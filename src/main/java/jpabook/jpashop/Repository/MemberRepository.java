@@ -1,6 +1,7 @@
 package jpabook.jpashop.Repository;
 
 import jpabook.jpashop.domain.Member;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -8,17 +9,18 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class MemberRepository {
 
-    @PersistenceContext
-    EntityManager em;
+    // @PersistenceContext
+    EntityManager em; // 스프링 데이터 jpa를 사용하면 EntityManager도 주입 가능
 
     public Long save(Member member){
         em.persist(member);
         return member.getId();
     }
 
-    public Member find(Long id){
+    public Member findOne(Long id){
         return em.find(Member.class, id);
     }
 
