@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberRepository {
 
-    // @PersistenceContext
+    @PersistenceContext
     EntityManager em; // 스프링 데이터 jpa를 사용하면 EntityManager도 주입 가능
 
     public Long save(Member member){
